@@ -2,6 +2,7 @@ import add_icon from './add_icon.svg'
 import admin_logo from './admin_logo.svg'
 import appointment_icon from './appointment_icon.svg'
 import cancel_icon from './cancel_icon.svg'
+import delete_icon from './delete_icon.svg'
 import doctor_icon from './doctor_icon.svg'
 import home_icon from './home_icon.svg'
 import people_icon from './people_icon.svg'
@@ -17,6 +18,7 @@ export const assets = {
     admin_logo,
     appointment_icon,
     cancel_icon,
+    delete_icon,
     doctor_icon,
     upload_area,
     home_icon,

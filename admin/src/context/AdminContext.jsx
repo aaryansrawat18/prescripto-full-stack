@@ -108,6 +108,25 @@ const AdminContextProvider = (props) => {
         }
 
     }
+    
+    // Function to delete appointment using API
+    const deleteAppointment = async (appointmentId) => {
+        try {
+            if (window.confirm('Are you sure you want to delete this appointment?')) {
+                const { data } = await axios.post(backendUrl + '/api/admin/delete-appointment', { appointmentId }, { headers: { aToken } })
+                
+                if (data.success) {
+                    toast.success(data.message)
+                    getAllAppointments()
+                } else {
+                    toast.error(data.message)
+                }
+            }
+        } catch (error) {
+            toast.error(error.message)
+            console.log(error)
+        }
+    }
 
     // Getting Admin Dashboard data from Database using API
     const getDashData = async () => {
@@ -138,6 +157,7 @@ const AdminContextProvider = (props) => {
         getAllAppointments,
         getDashData,
         cancelAppointment,
+        deleteAppointment,
         dashData
     }
 

@@ -166,6 +166,24 @@ const deleteDoctor = async (req, res) => {
     }
 }
 
+// API to delete an appointment
+const deleteAppointment = async (req, res) => {
+    try {
+        const { appointmentId } = req.body
+
+        if (!appointmentId) {
+            return res.json({ success: false, message: "Appointment ID is required" })
+        }
+
+        await appointmentModel.findByIdAndDelete(appointmentId)
+        res.json({ success: true, message: 'Appointment deleted successfully' })
+
+    } catch (error) {
+        console.log(error)
+        res.json({ success: false, message: error.message })
+    }
+}
+
 export {
     loginAdmin,
     appointmentsAdmin,
@@ -173,5 +191,6 @@ export {
     addDoctor,
     allDoctors,
     adminDashboard,
-    deleteDoctor
+    deleteDoctor,
+    deleteAppointment
 }
